@@ -29,7 +29,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home Area FNORD</h1>
+        <h1>Home Area test2</h1>
         <ItemList { ...this.state } />
       </div>
     );
