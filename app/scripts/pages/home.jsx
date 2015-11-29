@@ -2,6 +2,7 @@ import React from 'react';
 import ItemList from '../components/itemList.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
+import Invitation from '../components/invitation.jsx';
 
 class Home extends React.Component {
 
@@ -29,8 +30,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home Area test2</h1>
-        <ItemList { ...this.state } />
+        <Invitation />
       </div>
     );
   }
