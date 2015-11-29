@@ -4,7 +4,7 @@ import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
 
 class Home extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -29,7 +29,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home Area</h1>
+        <h1>Home Area FNORD</h1>
         <ItemList { ...this.state } />
       </div>
     );
