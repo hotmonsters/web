@@ -3,8 +3,7 @@ import { Link } from 'react-router';
 
 const Footer = (props) => {
   return (
-    <footer className="clearfix">
-      Application Name
+    <footer>
       <nav className="clearfix">
         <div className="nav-item">
           <Link to="home">Home</Link>

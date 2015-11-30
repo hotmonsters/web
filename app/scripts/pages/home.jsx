@@ -37,6 +37,7 @@ class Home extends React.Component {
         navigation: true,
         verticalAlign: true,
         delay: 500,
+        arrowNavigation: true,
     };
     return (
       <SectionsContainer {...options}>
