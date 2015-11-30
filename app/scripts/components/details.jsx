@@ -7,9 +7,11 @@ class Details extends React.Component {
 
     render() {
         return (
-            <div className="details">
-                <h1>HOTMONSTERS.ORG</h1>
-                <p>december 18, monsterdelphia, monstervania</p>
+            <div className="details-wrapper">
+                <div className="details">
+                    <h1>HOTMONSTERS.ORG</h1>
+                    <p>december 18, monsterdelphia, monstervania</p>
+                </div>
             </div>
         )
     }
