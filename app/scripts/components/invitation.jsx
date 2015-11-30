@@ -8,11 +8,7 @@ class Invitation extends React.Component {
     render() {
         return (
             <div className="invitation-wrapper">
-                <div className="invitation">
-                    <h1>hotmonsters hot diggity!</h1>
-                    <p>come see the hottest monsters who know how to party</p>
-                    <img src="/images/drunk_winkolina.jpg" />
-                </div>
+                <img className="invitation" src="/images/drunk_winkolina.jpg" />
             </div>
         )
     }
