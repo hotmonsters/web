@@ -11,6 +11,7 @@ class Invitation extends React.Component {
                 <div className="invitation">
                     <h1>hotmonsters hot diggity!</h1>
                     <p>come see the hottest monsters who know how to party</p>
+                    <img src="/images/drunk_winkolina.jpg" />
                 </div>
             </div>
         )
