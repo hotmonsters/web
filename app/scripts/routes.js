@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
-import createHistory from 'history/lib/createHashHistory'
+import { createHistory } from 'history'
 
 import App from './pages/app.jsx';
 import Home from './pages/home.jsx';

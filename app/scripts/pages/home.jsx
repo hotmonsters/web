@@ -3,6 +3,8 @@ import ItemList from '../components/itemList.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
 import Invitation from '../components/invitation.jsx';
+import Details from '../components/details.jsx';
+import {SectionsContainer, Section} from 'react-fullpage';
 
 class Home extends React.Component {
 
@@ -28,10 +30,23 @@ class Home extends React.Component {
   }
 
   render() {
+    let options = {
+        activeClass: 'active',
+        anchors: ['invitation', 'details'],
+        scrollBar: false,
+        navigation: true,
+        verticalAlign: true,
+        delay: 500,
+    };
     return (
-      <div>
-        <Invitation />
-      </div>
+      <SectionsContainer {...options}>
+        <Section>
+            <Invitation />
+        </Section>
+        <Section>
+            <Details />
+        </Section>
+      </SectionsContainer>
     );
   }
 }

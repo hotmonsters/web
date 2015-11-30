@@ -13,7 +13,7 @@ var app = 'app/';
 var dist = 'dist/';
 
 // https://github.com/ai/autoprefixer
-var autoprefixerBrowsers = [                 
+var autoprefixerBrowsers = [
   'ie >= 9',
   'ie_mob >= 10',
   'ff >= 30',
@@ -52,7 +52,7 @@ gulp.task('styles',function(cb) {
       // include 'normal' css into main.css
       'include css' : true
     }))
-    .pipe($.autoprefixer({browsers: autoprefixerBrowsers})) 
+    .pipe($.autoprefixer({browsers: autoprefixerBrowsers}))
     .pipe(gulp.dest(dist + 'css/'))
     .pipe($.size({ title : 'css' }))
     .pipe($.connect.reload());
@@ -77,6 +77,12 @@ gulp.task('images', function(cb) {
     .pipe(gulp.dest(dist + 'images/'));
 });
 
+gulp.task('fonts', function(cb) {
+  return gulp.src(app + 'fonts/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe($.size({ title : 'fonts' }))
+    .pipe(gulp.dest(dist + 'fonts/'));
+});
+
 // watch styl, html and js file changes
 gulp.task('watch', function() {
   gulp.watch(app + 'stylus/*.styl', ['styles']);
@@ -92,9 +98,9 @@ gulp.task('clean', function(cb) {
 
 
 // by default build project and then watch files in order to trigger livereload
-gulp.task('default', ['images', 'html','scripts', 'styles', 'serve', 'watch']);
+gulp.task('default', ['images', 'fonts', 'html', 'scripts', 'styles', 'serve', 'watch']);
 
 // waits until clean is finished then builds the project
-gulp.task('build', ['clean'], function(){
-  gulp.start(['images', 'html','scripts','styles']);
+gulp.task('build', [], function(){
+  gulp.start(['images', 'fonts', 'html','scripts','styles']);
 });
