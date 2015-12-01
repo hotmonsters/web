@@ -5,7 +5,7 @@
 
 /* variables */
 $lightgrey = #999
-$linkColor = #555
+$linkColor = lighten(#53195f, 15%)
 $grey = #eee
 $black = #222
 $white = #f7f7f7
@@ -75,10 +75,95 @@ footer
     font-weight: normal;
     font-style: normal;
 
-.monsters-typeface
-    font-family: 'monsters'
-    font-size: 10px
-    letter-spacing: -1px
-    line-height: 100%
-    margin: 0px
-    text-align: left
+@font-face
+    font-family: 'germsmonsters';
+    src: url('/fonts/germs-webfont.eot');
+    src: url('/fonts/germs-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/germs-webfont.woff2') format('woff2'),
+         url('/fonts/germs-webfont.woff') format('woff'),
+         url('/fonts/germs-webfont.ttf') format('truetype'),
+         url('/fonts/germs-webfont.svg#germsmonsters') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+
+.no-select
+    user-select: none
+    cursor: normal
+
+.material-depth
+    padding: 1em
+    width: 110px
+    height: 110px
+    background-color: cyan
+    border-radius: 110px
+    display: flex
+    align-items: center
+    justify-content: center
+
+
+.small-border-box-wrapper
+    border-radius: 1em
+    background: repeating-linear-gradient(
+      135deg,
+      #ff7a00,
+      #ff7a00 25px,
+      #53195f 25px,
+      #53195f 50px
+    )
+    padding: 0.1in
+    z-depth(1)
+
+    > *
+        background-image: url(/images/paper.png)
+        padding: 1em
+        width: 100%
+        height: 100%
+        border-radius: 1em
+        z-depth(1)
+
+
+.costume-ideas-wrapper
+    margin: 5em
+    position: fixed
+    top: 0px
+    bottom: 0px
+    left: 0px
+    right: 0px
+
+.costume-ideas
+    display: flex
+    flex-direction: column
+    align-items: left
+    justify-content: top
+
+    article
+        flex: 1
+        display: flex
+        flex-direction: row
+        justify-content: left
+
+        main
+            overflow-y: scroll
+h1
+    font-weight: normal
+    font-family: germsmonsters
+    font-size: 3.8em
+    letter-spacing: 0.2em
+    margin: 0em
+    line-height: 1em
+
+
+.costume-ideas-list
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    flex-wrap: wrap
+
+    .item
+        display: flex
+        flex-direction: row
+        align-items: flex-end
+        justify-content: bottom
+        padding: 30px
+        font-size: 25px

@@ -1,4 +1,7 @@
 import React from 'react';
+import Monster from '../components/monster.jsx';
+import { Link } from 'react-router';
+import SmallBorderBox from '../components/small-border-box.jsx';
 
 class Details extends React.Component {
     constructor(props) {
@@ -6,35 +9,24 @@ class Details extends React.Component {
     }
 
     render() {
-        var monster = [
-'',
-'yN',
-'  GB',
-'  IaJEz',
-'Eqpraz',
-'DassC',
-'  GaH',
-'    X',
-''
-]
+        var monster = ['yN', '  GB', '  IaJEz', 'Eqpraz', 'DassC', '  GaH', '    X'];
         var lines = monster.map(function (line) { return (
             <pre className='monsters-typeface'>{line}</pre>
            ); });
         return (
-            <div className="details-wrapper">
-                <div className="details">
-                    <header>
-                    <h1>HOTMONSTERS.ORG</h1>
-                    </header>
-                    <div>
-                    {lines}
-                    </div>
-                    <footer>
+            <SmallBorderBox className="details">
+                <header>
+                    <Monster lines={monster} />
+                </header>
+
+                <h1>HOTMONSTERS.ORG</h1>
+
+                <footer>
                     <p>friday, december 18, 2015</p>
                     <p>monsterdelphia, monstervania</p>
-                    </footer>
-                </div>
-            </div>
+                    <p style={{marginTop: '1em'}}><Link to="costume-ideas">costume ideas</Link></p>
+                </footer>
+            </SmallBorderBox>
         )
     }
 }

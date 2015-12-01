@@ -3,13 +3,14 @@ import ItemActions from '../actions/itemActions';
 
 let ItemStore = Reflux.createStore({
   listenables: ItemActions,
-  
+
   init() {
-    this.items = [];
+    this.items = [
+    ];
   },
 
   loadItems() {
-    this.trigger({ 
+    this.trigger({
       loading: true
     });
   },
@@ -17,14 +18,14 @@ let ItemStore = Reflux.createStore({
   loadItemsCompleted(items) {
     this.items = items;
 
-    this.trigger({ 
+    this.trigger({
       items : this.items,
       loading: false
     });
   },
 
   loadItemsFailed(error) {
-    this.trigger({ 
+    this.trigger({
       error : error,
       loading: false
     });

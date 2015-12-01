@@ -4,6 +4,7 @@ import { createHistory } from 'history'
 
 import App from './pages/app.jsx';
 import Home from './pages/home.jsx';
+import CostumeIdeas from './pages/costume-ideas.jsx';
 import Info from './pages/info.jsx';
 import NotFound from './pages/notFound.jsx';
 
@@ -17,6 +18,7 @@ const routes = (
       <IndexRoute component={ Home }/>
       <Route path='info' component={ Info } />
       <Route path='home' component={ Home } />
+      <Route path='costume-ideas' component={ CostumeIdeas } />
       <Route path='*' component={NotFound}/>
     </Route>
   </Router>

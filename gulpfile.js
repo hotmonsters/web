@@ -64,9 +64,10 @@ gulp.task('serve', function() {
   $.connect.server({
     root: dist,
     port: port,
+    fallback: dist + 'index.html',
     livereload: {
       port: 35729
-    }
+    },
   });
 });
 

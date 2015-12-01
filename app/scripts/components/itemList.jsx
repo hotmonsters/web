@@ -1,17 +1,18 @@
 import React from 'react';
+import Monster from '../components/monster.jsx';
 
 const ItemList = (props) => {
-    let items = props.items.map(item => <li key={ item }>{ item }</li>),
+    let items = props.items.map( (item, index) =>
+                    <Monster className='item' key={index} lines={item} />
+                ),
       loading = props.loading ? <div className="loading-label">Loading...</div> : '';
 
     return (
-      <div>
+      <div className='costume-ideas-list'>
         {loading}
-        <ul>
-          {items}
-        </ul>
+        {items}
       </div>
-    );                               
+    );
 };
 
 ItemList.propTypes = {
