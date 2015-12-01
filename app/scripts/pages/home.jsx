@@ -5,6 +5,7 @@ import ItemActions from '../actions/itemActions';
 import Invitation from '../components/invitation.jsx';
 import Details from '../components/details.jsx';
 import {SectionsContainer, Section} from 'react-fullpage';
+import ScrollAffordance from '../components/scrollAffordance.jsx';
 
 class Home extends React.Component {
 
@@ -43,6 +44,7 @@ class Home extends React.Component {
       <SectionsContainer {...options}>
         <Section>
             <Invitation />
+            <ScrollAffordance />
         </Section>
         <Section>
             <Details />
