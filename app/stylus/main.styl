@@ -226,7 +226,7 @@ header.ribbon-header
 
     article
         display: flex
-        flex-direction: column
+        flex-direction: row
         align-items: center
         justify-content: space-between
         height: 100%
@@ -237,29 +237,22 @@ header.ribbon-header
 
         .preview
             display: flex
-            align-items: center
-            justify-content: center
+            align-items: flex-start
+            justify-content: flex-end
             font-size: 30px
-            text-align: left
 
         .editor
             display: flex
             flex-direction: row
-            align-items: center
-            justify-content: center
+            align-items: flex-start
+            justify-content: flex-start
 
 .monster-editor
-    flex: 1
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-
     input
         display: block
         font-family: 'monsters'
         font-size: 20px
-        height: 20px
+        height: 24px
 
         padding-left: 1em
 

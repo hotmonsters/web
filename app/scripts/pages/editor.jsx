@@ -48,8 +48,8 @@ class Editor extends React.Component {
                 <div className="preview">
                     <Monster lines={this.state.monster} />
                 </div>
+                <span style={{width: '20px'}} />
                 <div className="editor">
-                    <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} />
                     <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} plaintext />
                 </div>
             </article>
