@@ -4,6 +4,7 @@ import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
 import SmallBorderBox from '../components/small-border-box.jsx';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
 class CostumeIdeas extends React.Component {
 
@@ -36,11 +37,11 @@ class CostumeIdeas extends React.Component {
                     <div className="ribbon-front">
                         <div className="text">
                             costume ideas
-                            <span className="add-button">
+                            <Link className="add-button" to="editor">
                                 <FontAwesome
                                     name='plus'
                                     />
-                            </span>
+                            </Link>
                         </div>
                     </div>
                     <div className="ribbon-edge-topleft"></div>

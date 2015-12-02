@@ -14,6 +14,7 @@ ItemActions.loadItems.listen(function(){
       },
       {
           lines: ['   B        A', '  PaaaaaO', '  Pata%aO', '  PapppaO', '    DaaaC', '      X  W'],
+          contributor: 'billy grace hawthorne, age √19',
       },
       {
           contributor: 'mrs. jeremiah stevenson, age 86',
