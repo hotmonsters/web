@@ -32,7 +32,7 @@ class CostumeIdeas extends React.Component {
   render() {
     return (
         <SmallBorderBox className='costume-ideas'>
-            <header>
+            <header className='ribbon-header'>
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
                         <div className="text">
