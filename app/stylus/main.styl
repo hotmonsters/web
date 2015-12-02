@@ -242,7 +242,14 @@ header.ribbon-header
             font-size: 30px
             text-align: left
 
+        .editor
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: center
+
 .monster-editor
+    flex: 1
     display: flex
     flex-direction: column
     align-items: center
@@ -251,8 +258,14 @@ header.ribbon-header
     input
         display: block
         font-family: 'monsters'
+        font-size: 20px
+        height: 20px
 
         padding-left: 1em
+
+    input.plaintext
+        font-size: 20px
+        font-family: monospace
 
 
 /* ribbon style */

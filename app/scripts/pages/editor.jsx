@@ -50,6 +50,7 @@ class Editor extends React.Component {
                 </div>
                 <div className="editor">
                     <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} />
+                    <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} plaintext />
                 </div>
             </article>
         </SmallBorderBox>

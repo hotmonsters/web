@@ -19,9 +19,15 @@ class MonsterEditor extends React.Component {
                 this.props.lines.map(line => line.length)
         );
 
+        var className = '';
+        if (this.props.plaintext) {
+            className = 'plaintext';
+        }
+
         let lines = this.props.lines.map(function(line, index) {
             return (
                 <input
+                    className={className}
                     size={inputSize}
                     ref={index}
                     onChange={makeHandleChange(index)}
