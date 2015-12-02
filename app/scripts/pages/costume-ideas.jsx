@@ -30,13 +30,21 @@ class CostumeIdeas extends React.Component {
   render() {
     return (
         <SmallBorderBox className='costume-ideas'>
+            <header>
+                <div className="ribbon-wrapper">
+                    <div className="ribbon-front">
+                        <div className="text">costume ideas</div>
+                    </div>
+                    <div className="ribbon-edge-topleft"></div>
+                    <div className="ribbon-edge-topright"></div>
+                    <div className="ribbon-edge-bottomleft"></div>
+                    <div className="ribbon-edge-bottomright"></div>
+                    <div className="ribbon-back-left"></div>
+                    <div className="ribbon-back-right"></div>
+                </div>
+            </header>
             <article>
-                <main style={{width: '70%'}}>
-                    <ItemList {...this.state} />
-                </main>
-                <aside style={{width: '30%'}}>
-                    hello
-                </aside>
+                <ItemList {...this.state} />
             </article>
         </SmallBorderBox>
     );
