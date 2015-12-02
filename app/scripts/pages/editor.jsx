@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 import Monster from '../components/monster.jsx';
 import MonsterEditor from '../components/monster-editor.jsx';
+import Guide from '../components/guide.jsx';
 
 class Editor extends React.Component {
 
@@ -45,13 +46,16 @@ class Editor extends React.Component {
                 </div>
             </header>
             <article>
-                <div className="preview">
-                    <Monster lines={this.state.monster} />
+                <div className="top-part">
+                    <div className="preview">
+                        <Monster lines={this.state.monster} />
+                    </div>
+                    <span style={{width: '20px'}} />
+                    <div className="editor">
+                        <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} plaintext />
+                    </div>
                 </div>
-                <span style={{width: '20px'}} />
-                <div className="editor">
-                    <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} plaintext />
-                </div>
+                <Guide />
             </article>
         </SmallBorderBox>
     );
