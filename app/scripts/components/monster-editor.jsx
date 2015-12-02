@@ -14,9 +14,15 @@ class MonsterEditor extends React.Component {
             }.bind(this);
         }.bind(this);
 
+        let inputSize = Math.max.apply(
+                null,
+                this.props.lines.map(line => line.length)
+        );
+
         let lines = this.props.lines.map(function(line, index) {
             return (
                 <input
+                    size={inputSize}
                     ref={index}
                     onChange={makeHandleChange(index)}
                     key={index}
