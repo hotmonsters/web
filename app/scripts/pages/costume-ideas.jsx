@@ -3,6 +3,7 @@ import ItemList from '../components/itemList.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
 import SmallBorderBox from '../components/small-border-box.jsx';
+import FontAwesome from 'react-fontawesome';
 
 class CostumeIdeas extends React.Component {
 
@@ -33,7 +34,14 @@ class CostumeIdeas extends React.Component {
             <header>
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
-                        <div className="text">costume ideas</div>
+                        <div className="text">
+                            costume ideas
+                            <span className="add-button">
+                                <FontAwesome
+                                    name='plus'
+                                    />
+                            </span>
+                        </div>
                     </div>
                     <div className="ribbon-edge-topleft"></div>
                     <div className="ribbon-edge-topright"></div>
