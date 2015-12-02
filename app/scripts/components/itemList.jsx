@@ -1,9 +1,9 @@
 import React from 'react';
-import Monster from '../components/monster.jsx';
+import Item from '../components/item.jsx';
 
 const ItemList = (props) => {
     let items = props.items.map( (item, index) =>
-                    <Monster className='item' key={index} lines={item} />
+                    <Item key={index} monster={item} />
                 ),
       loading = props.loading ? <div className="loading-label">Loading...</div> : '';
 

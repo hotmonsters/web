@@ -43,6 +43,7 @@
     "webpack": "^1.12.3"
   },
   "dependencies": {
+    "classnames": "^2.2.1",
     "history": "^1.13.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
