@@ -4,6 +4,11 @@ const ItemActions = Reflux.createActions({
   'loadItems': {children: ['completed', 'failed']}
 });
 
+function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+
 ItemActions.loadItems.listen(function(){
   // make your api call/ async stuff here
   // we use setTimeout for faking async behaviour here
@@ -38,6 +43,7 @@ ItemActions.loadItems.listen(function(){
           lines: ['AaaaaB', 'Aabb&bbaB', 'AIJIJB ', 'AKLKLB', ' STTTU ', 'AaaaaB', ' d  d  d', ' e  e  e'],
       },
       {
+          contributor: 'winkolina, age 112',
           lines: ['yN', '  GB', '  IaJEz', 'Eqpraz', 'DassC', '  GaH', '    X'],
       },
       {
@@ -45,7 +51,7 @@ ItemActions.loadItems.listen(function(){
           lines: ["y3aaaaaaF",  " EFbSTUbccc00", "bcsscbcsbbbsbbbcccb00","bcKLcbcccccc00300", "bcIJcbcD0CD0C","bcRRcbcaaaaaaF","bc00cbcaaaaaaH", "cO Pc  f    f"]
       },
     ];
-    this.completed(items);
+    this.completed(shuffle(items));
 
     // on error
     // this.failed('an error occured');

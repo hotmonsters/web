@@ -34,6 +34,55 @@ body
   line-height: 1.5
   background-image: url(/images/stardust.png)
 
+.content
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+
+.page
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 100%
+
+.invitation-page
+    .scroll-affordance
+        cursor: pointer
+        position: fixed
+        left: 0
+        bottom: 2em
+        width: 100%
+
+.details-page
+    .scroll-affordance
+        cursor: pointer
+        position: fixed
+        left: 0
+        top: 2em
+        width: 100%
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+}
+
+
 
 .Section
     > * > *
@@ -64,9 +113,6 @@ footer
 
     &:last-child:after
       content: ''
-
-.content
-  padding: 1em
 
 @font-face
     font-family: 'monsters';
@@ -126,6 +172,9 @@ footer
         z-depth(1)
 
     &.thick
+        @media (min-width: 6in)
+            padding: 3em
+
         background: repeating-linear-gradient(
           45deg,
           #53195f,
@@ -133,7 +182,6 @@ footer
           #ff7a00 25px,
           #ff7a00 50px
         )
-        padding: 3em
 
         > *
           border: 0.3em solid #eee
@@ -142,7 +190,7 @@ footer
 
     header.ribbon-header
         position: absolute
-        top: 18px
+        top: 28px
         left: -20px
 
         .text
@@ -173,3 +221,96 @@ footer
                 margin-left: -1px
                 padding-top: 3px
 
+/* ribbon style */
+
+.ribbon-wrapper {
+	position: relative;
+	border-top: 0px solid #ccc;
+	-moz-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-webkit-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-moz-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+	-webkit-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
+}
+.ribbon-front {
+	background-color: #43FFF3;	height: 40px;
+	width: 160px;
+	position: relative;
+	left:-20px;
+	z-index: 2;
+}
+
+.ribbon-front,
+.ribbon-back-left,
+.ribbon-back-right
+{
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+}
+
+.ribbon-edge-topleft,
+.ribbon-edge-topright,
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
+	position: absolute;
+	z-index: 1;
+	border-style:solid;
+	height:0px;
+	width:0px;
+}
+
+.ribbon-edge-topleft,
+.ribbon-edge-topright {
+}
+
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
+	top: 40px;
+}
+
+.ribbon-edge-topleft,
+.ribbon-edge-bottomleft {
+	left: -20px;
+	border-color: transparent #99c transparent transparent;
+}
+
+.ribbon-edge-topleft {
+	top: 0px;
+	border-width: 0px 20px 0 0;
+}
+.ribbon-edge-bottomleft {
+	border-width: 0 20px 10px 0;
+}
+
+.ribbon-edge-topright,
+.ribbon-edge-bottomright {
+	left: 140px;
+	border-color: transparent transparent transparent #99c;
+}
+
+.ribbon-edge-topright {
+	top: 0px;
+	border-width: 0px 0 0 0px;
+}
+.ribbon-edge-bottomright {
+	border-width: 0 0 0px 0px;
+}
+
+.ribbon-back-left {
+	position: absolute;
+	top: 10px;
+	left: -30px;
+	width: 30px;
+	height: 40px;
+	background-color: #43fff3;	z-index: 0;
+}
+
+.ribbon-back-right {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 0px;
+	height: 40px;
+		z-index: 0;
+}

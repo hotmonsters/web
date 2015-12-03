@@ -1,9 +1,34 @@
 @import 'material-shadows'
 
-.invitation-wrapper
-  width: 6in
-  height: 5in
+.fixed-aspect-ratio-container
+    @media (max-width: 6in)
+        margin: 1em
 
-.invitation img
-      width: 100%
-      height: 100%
+    @media (max-height: 5in) and  (min-width: 6in)
+        margin: 5em
+
+
+    max-width: 6in
+    max-height: 4.5in
+    position: relative
+    width: 100%
+    &:before
+        display: block
+        content: ''
+        padding-top: 75%
+
+.fixed-aspect-ratio
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+
+
+.invitation-wrapper
+    width: 100%
+    height: 100%
+
+.invitation
+    background-image: url(/images/drunk_winkolina.jpg) !important
+    background-size: cover

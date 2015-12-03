@@ -1,22 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Swipeable from 'react-swipeable';
-import Invitation from '../components/invitation.jsx';
+import DetailsComponent from '../components/details.jsx';
 import ScrollAffordance from '../components/scrollAffordance.jsx';
 import $ from 'jquery';
 import _ from 'underscore';
 
-
-class Home extends React.Component {
-  constructor(props) {
+class Details extends React.Component {
+  constructor (props) {
       super(props);
       this.handleScroll = _.throttle(function (e) {
           var delta = (e.originalEvent.wheelDelta || -e.originalEvent.detail);
 
-          if (delta < 0) {
-              this.handleScrollDown();
+          if (delta > 0) {
+              this.handleScrollUp();
           }
       }, 1000).bind(this);
+  }
+
+  handleScrollUp() {
+    this.context.history.pushState(null, '');
   }
 
   componentDidMount() {
@@ -27,22 +29,18 @@ class Home extends React.Component {
       $('html').off('mousewheel DOMMouseScroll', this.handleScroll);
   }
 
-  handleScrollDown() {
-    this.context.history.pushState(null, 'details');
-  }
-
   render() {
     return (
-        <Swipeable className="invitation-page page" onSwipingUp={this.handleScrollDown.bind(this)}>
-            <Invitation ref="invitation" />
-            <ScrollAffordance onClick={this.handleScrollDown.bind(this)} />
+        <Swipeable className="details-page page" onSwipingDown={this.handleScrollUp.bind(this)}>
+            <ScrollAffordance direction="up" onClick={this.handleScrollUp.bind(this)} />
+            <DetailsComponent />
         </Swipeable>
     );
   }
 }
 
-Home.contextTypes = {
+Details.contextTypes = {
   history: React.PropTypes.object.isRequired
 };
 
-export default Home;
+export default Details;

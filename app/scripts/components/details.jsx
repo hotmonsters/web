@@ -14,19 +14,23 @@ class Details extends React.Component {
             <pre className='monsters-typeface'>{line}</pre>
            ); });
         return (
-            <BorderBox className="details">
-                <header>
-                    <Monster lines={monster} />
-                </header>
+            <div className="fixed-aspect-ratio-container">
+                <div className="fixed-aspect-ratio">
+                    <BorderBox className="details">
+                        <header>
+                            <Monster lines={monster} />
+                        </header>
 
-                <h1>HOTMONSTERS.ORG</h1>
+                        <h1>HOTMONSTERS.ORG</h1>
 
-                <footer>
-                    <p>friday, december 18, 2015</p>
-                    <p>monsterdelphia, monstervania</p>
-                    <p style={{marginTop: '1em'}}><Link to="costume-ideas">costume ideas</Link></p>
-                </footer>
-            </BorderBox>
+                        <footer>
+                            <p>friday, december 18, 2015</p>
+                            <p>monsterdelphia, monstervania</p>
+                            <p style={{marginTop: '1em'}}><Link to="costume-ideas">costume ideas</Link></p>
+                        </footer>
+                    </BorderBox>
+                </div>
+            </div>
         )
     }
 }

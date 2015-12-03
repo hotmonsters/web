@@ -9,6 +9,13 @@ class ItemList extends React.Component {
       this.refs.packery.performLayout();
     }
 
+    onComponentDidMount() {
+      let packery = this.refs.packery;
+      setTimeout((() => {
+          packery.performLayout();
+      }), 1000);
+    }
+
     render() {
       let items = this.props.items.map( (item, index) =>
                       <Item key={index} monster={item} />
@@ -21,11 +28,17 @@ class ItemList extends React.Component {
           {(() => {
              if (!this.props.loading) {
                 return (
-                  <Packery
-                      ref='packery'
-                  >
-                      {items}
-                  </Packery>
+                  <div>
+                      <Packery
+                          ref='packery'
+                          options={{
+                              isOriginLeft: false,
+                              isOriginTop: false
+                          }}
+                      >
+                          {items}
+                      </Packery>
+                  </div>
                 )
               }
           })()}

@@ -3,10 +3,6 @@ import React from 'react';
 class Monster extends React.Component {
     constructor (props) {
         super(props);
-        this.propTypes = {
-            lines: React.PropTypes.arrayOf(React.PropTypes.string),
-            className: React.PropTypes.string
-        };
     }
 
     render() {
@@ -18,9 +14,9 @@ class Monster extends React.Component {
             textAlign: 'left'
         };
 
-        var lines = this.props.lines.map(function (line) {
+        var lines = this.props.lines.map(function (line, index) {
             return (
-                <pre style={style}>{line}</pre>
+                <pre key={index} style={style}>{line}</pre>
             );
         });
 

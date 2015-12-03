@@ -8,9 +8,12 @@ class Invitation extends React.Component {
 
     render() {
         return (
-            <BorderBox thickBorder className='invitation'>
-                <img src="/images/drunk_winkolina.jpg" />
-            </BorderBox>
+            <div className="fixed-aspect-ratio-container">
+                <div className="fixed-aspect-ratio">
+                    <BorderBox thickBorder className='invitation'>
+                    </BorderBox>
+                </div>
+            </div>
         )
     }
 }
