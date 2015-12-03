@@ -2,7 +2,7 @@ import React from 'react';
 import ItemList from '../components/itemList.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
-import SmallBorderBox from '../components/small-border-box.jsx';
+import BorderBox from '../components/border-box.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 import Monster from '../components/monster.jsx';
@@ -24,7 +24,7 @@ class Editor extends React.Component {
 
   render() {
     return (
-        <SmallBorderBox className='costume-editor'>
+        <BorderBox className='costume-editor'>
             <header className="ribbon-header">
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
@@ -57,7 +57,7 @@ class Editor extends React.Component {
                 </div>
                 <Guide />
             </article>
-        </SmallBorderBox>
+        </BorderBox>
     );
   }
 }

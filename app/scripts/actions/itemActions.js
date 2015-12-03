@@ -10,9 +10,6 @@ ItemActions.loadItems.listen(function(){
   setTimeout(() => {
     const items = [
       {
-          lines: ['yN', '  GB', '  IaJEz', 'Eqpraz', 'DassC', '  GaH', '    X'],
-      },
-      {
           lines: ['   B        A', '  PaaaaaO', '  Pata%aO', '  PapppaO', '    DaaaC', '      X  W'],
           contributor: 'billy grace hawthorne, age √19',
       },
@@ -39,6 +36,9 @@ ItemActions.loadItems.listen(function(){
       {
           contributor: 'samuel k. winterhoff, age 11',
           lines: ['AaaaaB', 'Aabb&bbaB', 'AIJIJB ', 'AKLKLB', ' STTTU ', 'AaaaaB', ' d  d  d', ' e  e  e'],
+      },
+      {
+          lines: ['yN', '  GB', '  IaJEz', 'Eqpraz', 'DassC', '  GaH', '    X'],
       },
       {
           contributor: 'stella feinstein, age 32',

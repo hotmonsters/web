@@ -24,8 +24,13 @@ class Monster extends React.Component {
             );
         });
 
+        var classNames = ['monster', 'no-select'];
+        if (this.props.className) {
+          classNames.push(this.props.className);
+        }
+
         return (
-          <div className={this.props.className + ' no-select'}>
+          <div className={classNames.join(' ')}>
             <div>
                 {lines}
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import BorderBox from '../components/border-box.jsx';
 
 class Invitation extends React.Component {
     constructor(props) {
@@ -7,9 +8,9 @@ class Invitation extends React.Component {
 
     render() {
         return (
-            <div className="invitation-wrapper">
-                <img className="invitation" src="/images/drunk_winkolina.jpg" />
-            </div>
+            <BorderBox thickBorder className='invitation'>
+                <img src="/images/drunk_winkolina.jpg" />
+            </BorderBox>
         )
     }
 }

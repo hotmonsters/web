@@ -1,7 +1,7 @@
 import React from 'react';
 import Monster from '../components/monster.jsx';
 import { Link } from 'react-router';
-import SmallBorderBox from '../components/small-border-box.jsx';
+import BorderBox from '../components/border-box.jsx';
 
 class Details extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Details extends React.Component {
             <pre className='monsters-typeface'>{line}</pre>
            ); });
         return (
-            <SmallBorderBox className="details">
+            <BorderBox className="details">
                 <header>
                     <Monster lines={monster} />
                 </header>
@@ -26,7 +26,7 @@ class Details extends React.Component {
                     <p>monsterdelphia, monstervania</p>
                     <p style={{marginTop: '1em'}}><Link to="costume-ideas">costume ideas</Link></p>
                 </footer>
-            </SmallBorderBox>
+            </BorderBox>
         )
     }
 }

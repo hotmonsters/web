@@ -2,13 +2,15 @@
 @import 'helper'
 @import 'invitation'
 @import 'details'
+@import 'costume-ideas'
+@import 'editor'
 
 
 /* variables */
 $lightgrey = #999
 $linkColor = lighten(#53195f, 15%)
 $grey = #eee
-$black = #222
+$black = #333
 $white = #f7f7f7
 
 html
@@ -103,7 +105,7 @@ footer
     justify-content: center
 
 
-.small-border-box-wrapper
+.border-box-wrapper
     border-radius: 1em
     background: repeating-linear-gradient(
       135deg,
@@ -112,7 +114,8 @@ footer
       #53195f 25px,
       #53195f 50px
     )
-    padding: 0.1in
+    padding: .6em
+
     z-depth(1)
 
     > *
@@ -122,263 +125,51 @@ footer
         border-radius: 1em
         z-depth(1)
 
+    &.thick
+        background: repeating-linear-gradient(
+          45deg,
+          #53195f,
+          #53195f 25px,
+          #ff7a00 25px,
+          #ff7a00 50px
+        )
+        padding: 3em
 
-.costume-ideas-wrapper
-    margin: 5em
-    position: fixed
-    top: 0px
-    bottom: 0px
-    left: 0px
-    right: 0px
+        > *
+          border: 0.3em solid #eee
+          z-depth(4)
+          overflow: hidden
 
-.costume-ideas
-    display: flex
-    flex-direction: column
-    align-items: left
-    justify-content: top
-    position: relative
+    header.ribbon-header
+        position: absolute
+        top: 18px
+        left: -20px
 
-
-    article
-        overflow-y: scroll
-        padding-left: 0.5em
-        padding-right: .5em
-        padding-top: 1em
-        padding-bottom: 1em
-
-header.ribbon-header
-    position: absolute
-    top: 10px
-    left: -20px
-
-    .text
-        font-size: 1.2em
-        height: 100%
-        display: flex
-        align-items: center
-        justify-content: center
-        font-family: 'Kaushan Script', cursive;
-        color: #53195f
-
-    .add-button
-        font-size: 90%
-        background: white
-        border-radius: 23px
-        height: 24px
-        width: 24px
-        display: flex
-        align-items: center
-        justify-content: center
-        margin: 5px
-        margin-left: 10px
-        cursor: pointer
-        &:hover
-            z-depth(1)
-        span
-            color: #ff7a00
-            margin-left: -1px
-            padding-top: 3px
-
-
-.costume-ideas-list
-    display: flex
-    flex-direction: row
-    align-items: flex-start
-    flex-wrap: wrap
-    justify-content: space-between
-
-    .item
-        cursor: pointer
-        display: flex
-        flex-direction: row
-        align-items: flex-end
-        justify-content: bottom
-        padding: 10px
-        font-size: 24px
-        position: relative
-
-        aside
-            display: inline
-            padding-left: 1em
-            padding-right: 1em
-            background-color: white
-            border: 1px solid grey
-            border-radius: 1em
-            z-depth(1)
-
-            font-size: 14px
-            position: absolute
-            bottom: 0px
-            right: 10px
-            text-align: left
-
-.costume-editor-wrapper
-    margin: 5em
-    position: fixed
-    top: 0px
-    bottom: 0px
-    left: 0px
-    right: 0px
-
-.costume-editor
-    position: relative
-
-    article
-        display: flex
-        flex-direction: column
-        align-items: center
-        justify-content: space-between
-        height: 100%
-
-        .top-part
-            flex: 1
+        .text
+            font-size: 1.2em
+            height: 100%
             display: flex
-            flex-direction: row
             align-items: center
-            justify-content: space-between
+            justify-content: center
+            font-family: 'Kaushan Script', cursive;
+            color: #53195f
 
-            > div
-                width: 100%
+        .add-button
+            font-size: 90%
+            background: white
+            border-radius: 23px
+            height: 24px
+            width: 24px
+            display: flex
+            align-items: center
+            justify-content: center
+            margin: 5px
+            margin-left: 10px
+            cursor: pointer
+            &:hover
+                z-depth(1)
+            span
+                color: #ff7a00
+                margin-left: -1px
+                padding-top: 3px
 
-            .preview
-                display: flex
-                align-items: flex-start
-                justify-content: flex-end
-                font-size: 30px
-
-            .editor
-                display: flex
-                flex-direction: row
-                align-items: flex-start
-                justify-content: flex-start
-
-.monster-editor
-    input
-        display: block
-        font-family: 'monsters'
-        font-size: 20px
-        height: 24px
-
-        padding-left: 1em
-
-.plaintext
-    font-family: monospace !important
-
-.guide
-    flex: 1
-    display: flex
-    flex-wrap: wrap
-    font-size: 24px
-    align-items: center
-    justify-content: center
-    padding-bottom: 1em
-
-
-.guide-glyph
-    padding: 7px
-    display: flex
-    align-items: center
-    justify-content: center
-
-    .monster-typeface
-        font-family: 'monsters'
-
-    div
-        width: 24px
-        height: 24px
-
-/* ribbon style */
-
-/* ribbon style */
-
-.ribbon-wrapper {
-	position: relative;
-	border-top: 0px solid #ccc;
-	-moz-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
-	-webkit-border-bottom-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
-	-moz-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
-	-webkit-border-top-colors: rgba(0, 0, 0, 0.02) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.10) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.14) rgba(0, 0, 0, 0.16) rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0.20);
-}
-.ribbon-front {
-	background-color: #43FFF3;	height: 40px;
-	width: 160px;
-	position: relative;
-	left:-20px;
-	z-index: 2;
-}
-
-.ribbon-front,
-.ribbon-back-left,
-.ribbon-back-right
-{
-	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-	-khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-	-webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-	-o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
-}
-
-.ribbon-edge-topleft,
-.ribbon-edge-topright,
-.ribbon-edge-bottomleft,
-.ribbon-edge-bottomright {
-	position: absolute;
-	z-index: 1;
-	border-style:solid;
-	height:0px;
-	width:0px;
-}
-
-.ribbon-edge-topleft,
-.ribbon-edge-topright {
-}
-
-.ribbon-edge-bottomleft,
-.ribbon-edge-bottomright {
-	top: 40px;
-}
-
-.ribbon-edge-topleft,
-.ribbon-edge-bottomleft {
-	left: -20px;
-	border-color: transparent #99c transparent transparent;
-}
-
-.ribbon-edge-topleft {
-	top: 0px;
-	border-width: 0px 20px 0 0;
-}
-.ribbon-edge-bottomleft {
-	border-width: 0 20px 10px 0;
-}
-
-.ribbon-edge-topright,
-.ribbon-edge-bottomright {
-	left: 140px;
-	border-color: transparent transparent transparent #99c;
-}
-
-.ribbon-edge-topright {
-	top: 0px;
-	border-width: 0px 0 0 0px;
-}
-.ribbon-edge-bottomright {
-	border-width: 0 0 0px 0px;
-}
-
-.ribbon-back-left {
-	position: absolute;
-	top: 10px;
-	left: -30px;
-	width: 30px;
-	height: 40px;
-	background-color: #43fff3;	z-index: 0;
-}
-
-.ribbon-back-right {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	width: 0px;
-	height: 40px;
-		z-index: 0;
-}

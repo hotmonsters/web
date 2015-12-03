@@ -1,12 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 
-class SmallBorderBox extends React.Component {
+class BorderBox extends React.Component {
     constructor(props) {
         super(props);
-        this.propTypes = {
-            children: React.PropTypes.node,
-            className: React.PropTypes.string
-        }
     }
 
     render() {
@@ -15,13 +12,16 @@ class SmallBorderBox extends React.Component {
         var style = {
         };
 
-        var className = [
+        var cx = [
             this.props.className+'-wrapper',
-            'small-border-box-wrapper'
-        ].join(' ');
+            'border-box-wrapper',
+            {
+                'thick': this.props.thickBorder,
+            }
+        ];
 
         return (
-            <div className={className}>
+            <div className={classNames(cx)}>
                 <div className={this.props.className}>
                     {this.props.children}
                 </div>
@@ -30,4 +30,4 @@ class SmallBorderBox extends React.Component {
     }
 }
 
-export default SmallBorderBox;
+export default BorderBox;

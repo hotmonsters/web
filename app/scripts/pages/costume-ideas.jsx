@@ -2,7 +2,7 @@ import React from 'react';
 import ItemList from '../components/itemList.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
-import SmallBorderBox from '../components/small-border-box.jsx';
+import BorderBox from '../components/border-box.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 
@@ -31,7 +31,7 @@ class CostumeIdeas extends React.Component {
 
   render() {
     return (
-        <SmallBorderBox className='costume-ideas'>
+        <BorderBox className='costume-ideas'>
             <header className='ribbon-header'>
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
@@ -55,7 +55,7 @@ class CostumeIdeas extends React.Component {
             <article>
                 <ItemList {...this.state} />
             </article>
-        </SmallBorderBox>
+        </BorderBox>
     );
   }
 }

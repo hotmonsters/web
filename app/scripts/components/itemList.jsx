@@ -1,23 +1,48 @@
 import React from 'react';
+import Packery_ from 'react-packery-component';
 import Item from '../components/item.jsx';
 
-const ItemList = (props) => {
-    let items = props.items.map( (item, index) =>
-                    <Item key={index} monster={item} />
-                ),
-      loading = props.loading ? <div className="loading-label">Loading...</div> : '';
+var Packery = Packery_(React);
 
-    return (
-      <div className='costume-ideas-list'>
-        {loading}
-        {items}
-      </div>
-    );
-};
+class ItemList extends React.Component {
+    handleClick() {
+      this.refs.packery.performLayout();
+    }
 
-ItemList.propTypes = {
-  loading : React.PropTypes.bool,
-  items : React.PropTypes.array
+    render() {
+      let items = this.props.items.map( (item, index) =>
+                      <Item key={index} monster={item} />
+                  ),
+        loading = this.props.loading ? <div className="loading-label">Loading...</div> : '';
+
+      return (
+        <div className='costume-ideas-list'>
+          {loading}
+          {(() => {
+             if (!this.props.loading) {
+                return (
+                  <Packery
+                      ref='packery'
+                  >
+                      {items}
+                  </Packery>
+                )
+              }
+          })()}
+
+          <button
+             onClick={this.handleClick.bind(this)}
+             style={{
+               position: 'fixed',
+               bottom: '0px',
+               right: '0px',
+             }}
+          >
+            reload
+          </button>
+        </div>
+      );
+    }
 }
 
 export default ItemList;
