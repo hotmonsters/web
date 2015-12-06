@@ -54,9 +54,6 @@ class CostumeIdeas extends React.Component {
             </header>
             <article>
                 <ItemList {...this.state} />
-                <footer>
-                    <Link to="details">go back</Link>
-                </footer>
             </article>
         </BorderBox>
     );

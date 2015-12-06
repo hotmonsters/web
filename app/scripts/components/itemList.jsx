@@ -1,6 +1,8 @@
 import React from 'react';
 import Packery_ from 'react-packery-component';
 import Item from '../components/item.jsx';
+import Loader from 'halogen/MoonLoader';
+import { Link } from 'react-router';
 
 var Packery = Packery_(React);
 
@@ -9,31 +11,41 @@ class ItemList extends React.Component {
       this.refs.packery.performLayout();
     }
 
-    onComponentDidMount() {
-      let packery = this.refs.packery;
-      setTimeout((() => {
-          packery.performLayout();
-      }), 1000);
+    componentWillReceiveProps(nextProps) {
+      if (this.props.loading && !nextProps.loading) {
+          setTimeout((() => {
+              let packery = this.refs.packery;
+              packery.performLayout();
+          }).bind(this), 1000);
+      }
     }
 
     render() {
       let items = this.props.items.map( (item, index) =>
                       <Item key={index} monster={item} />
                   ),
-        loading = this.props.loading ? <div className="loading-label">Loading...</div> : '';
+        loading = this.props.loading ?
+                    <Loader color="#53195f" />
+                  : '';
+
+      let classNames = [
+          'costume-ideas-list'
+          ];
+
+      if (this.props.loading) {
+          classNames.push('loading');
+      }
 
       return (
-        <div className='costume-ideas-list'>
+        <div className={classNames.join(' ')}>
           {loading}
           {(() => {
              if (!this.props.loading) {
                 return (
-                  <div>
+                  <div className="block">
                       <Packery
                           ref='packery'
                           options={{
-                              isOriginLeft: false,
-                              isOriginTop: false
                           }}
                       >
                           {items}
@@ -42,6 +54,9 @@ class ItemList extends React.Component {
                 )
               }
           })()}
+          <footer>
+              <Link to="details">go back</Link>
+          </footer>
 
           <button
              onClick={this.handleClick.bind(this)}

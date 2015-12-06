@@ -55,7 +55,7 @@ ItemActions.loadItems.listen(function(){
 
     // on error
     // this.failed('an error occured');
-  }, 500);
+  }, 1000);
 });
 
 export default ItemActions;

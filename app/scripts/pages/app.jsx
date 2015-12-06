@@ -47,12 +47,14 @@ RouteCSSTransitionGroup.contextTypes = {
 
 const App = (props) => {
     return (
+            /*
         <RouteCSSTransitionGroup
           component="div" transitionName="example" className="content"
           transitionEnterTimeout={500} transitionLeaveTimeout={500}
-        >
+        >*/
+        <div className="content">
           {props.children}
-        </RouteCSSTransitionGroup>
+        </div>
     );
 };
 
