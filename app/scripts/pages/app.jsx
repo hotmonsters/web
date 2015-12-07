@@ -4,6 +4,7 @@ import StaticContainer from 'react-static-container';
 import GoogleAnalytics from 'react-g-analytics';
 import Footer from '../components/footer.jsx'
 import config from '../config.js';
+import { RouteHandler } from 'react-router';
 
 class RouteCSSTransitionGroup extends React.Component {
   constructor(props, context) {
@@ -47,26 +48,25 @@ RouteCSSTransitionGroup.contextTypes = {
     location: React.PropTypes.object
 }
 
-const App = (props) => {
-    var googleAnalytics;
-    if (config.googleAnalytics) {
-        googleAnalytics = (
-            <GoogleAnalytics id={config.googleAnalytics} />
+class App extends React.Component {
+    render() {
+        var googleAnalytics;
+        if (config.googleAnalytics) {
+            googleAnalytics = (
+                <GoogleAnalytics id={config.googleAnalytics} />
+            );
+        } else {
+            googleAnalytics = '';
+        }
+
+
+        return (
+            <div className="content">
+              {googleAnalytics}
+              {this.props.children}
+            </div>
         );
-    } else {
-        googleAnalytics = '';
     }
-    return (
-            /*
-        <RouteCSSTransitionGroup
-          component="div" transitionName="example" className="content"
-          transitionEnterTimeout={500} transitionLeaveTimeout={500}
-        >*/
-        <div className="content">
-          {googleAnalytics}
-          {props.children}
-        </div>
-    );
-};
+}
 
 export default App;
