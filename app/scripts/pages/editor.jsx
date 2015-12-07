@@ -25,6 +25,7 @@ class Editor extends React.Component {
       },
       loading: true,
       loadingMonster: true,
+      monsterSaved: true,
       saving: false,
       savingMonster: false,
     };
@@ -51,7 +52,7 @@ class Editor extends React.Component {
   }
 
   handleMonsterUpdate(lines) {
-      this.setState({monster: {lines: lines}});
+      this.setState({monsterSaved: false, monster: {lines: lines}});
   }
 
   onStatusChange(state) {
@@ -89,6 +90,11 @@ class Editor extends React.Component {
             )
         }
 
+        var saveText = 'save';
+        if (this.state.monsterSaved) {
+            saveText = 'saved!';
+        }
+
         content = (
             <article>
                 <div className="top-part">
@@ -107,7 +113,7 @@ class Editor extends React.Component {
                         className="save btn"
                         onClick={this.handleSave.bind(this)}
                     >
-                        save
+                        {saveText}
                         <span style={{display: 'inline-block'}}>
                             {savingSpinner}
                         </span>

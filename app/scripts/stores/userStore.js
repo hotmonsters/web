@@ -56,13 +56,16 @@ let UserStore = Reflux.createStore({
 
     saveMonster() {
         this.trigger({
-            savingMonster: true
+            savingMonster: true,
+            monsterSaved: false
         });
     },
 
     saveMonsterCompleted() {
         this.trigger({
-            savingMonster: false
+            error: null,
+            savingMonster: false,
+            monsterSaved: true,
         });
     },
 
