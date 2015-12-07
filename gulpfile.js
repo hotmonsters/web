@@ -1,7 +1,9 @@
 var path = require('path');
+var fs = require('fs');
 var del = require('del');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var gutil = require('gulp-util');
 
 // set variable via $ gulp --type production
 var environment = $.util.env.type || 'development';
@@ -25,7 +27,7 @@ var autoprefixerBrowsers = [
   'bb >= 10'
 ];
 
-gulp.task('scripts', function() {
+gulp.task('scripts', ['create-config'], function() {
   return gulp.src(webpackConfig.entry)
     .pipe($.webpack(webpackConfig))
     .pipe(isProduction ? $.uglify() : $.util.noop())
@@ -90,6 +92,15 @@ gulp.task('watch', function() {
   gulp.watch(app + 'index.html', ['html']);
   gulp.watch(app + 'scripts/**/*.js', ['scripts']);
   gulp.watch(app + 'scripts/**/*.jsx', ['scripts']);
+});
+
+
+gulp.task('create-config', function(cb) {
+  var env = gutil.env.type ? gutil.env.type : 'development';
+  fs.writeFile(app + 'scripts/env.js', "var config="+JSON.stringify({
+    env: env
+  })+"; export default config;", cb);
+
 });
 
 // remove bundels
