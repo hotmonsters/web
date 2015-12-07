@@ -3,13 +3,15 @@ import $ from 'jquery';
 
 import config from '../config.js';
 
-localStorage = window.localStorage;
+if (typeof(localStorage) === "undefined") {
+    localStorage = window.localStorage;
+}
 
 const UserActions = Reflux.createActions({
     'loadUser': {children: ['completed', 'failed']},
     'saveUser': {children: ['completed', 'failed']},
     'loadMonster': {children: ['completed', 'failed']},
-    'saveMonster': {children: ['completed', 'failed']},
+    'saveMonster': {children: ['completed', 'failed']}
 });
 
 var setupAjax = function (token) {
