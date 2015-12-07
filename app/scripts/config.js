@@ -6,7 +6,7 @@ var defaultConfig = {
 }
 
 var herokuConfig = {
-    apiRoot: 'http://hotmonsters.herokuapp.com',
+    apiRoot: 'https://hotmonsters.herokuapp.com',
 }
 
 var config = defaultConfig;
