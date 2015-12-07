@@ -33,6 +33,21 @@
     .block
         zoom: 0.8
 
+    .packery-fallback
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+
+    @media (min-width: 6in)
+        .packery-fallback
+            display: none
+
+    @media (max-width: 6in)
+        .packery
+            display: none
+
+
     padding-top: 3em
     .monster
         margin: .2em

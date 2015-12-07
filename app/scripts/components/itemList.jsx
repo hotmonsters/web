@@ -45,11 +45,15 @@ class ItemList extends React.Component {
                   <div className="block">
                       <Packery
                           ref='packery'
+                          className='packery'
                           options={{
                           }}
                       >
                           {items}
                       </Packery>
+                      <div className='packery-fallback'>
+                          {items}
+                      </div>
                   </div>
                 )
               }
@@ -57,17 +61,6 @@ class ItemList extends React.Component {
           <footer>
               <Link to="details">go back</Link>
           </footer>
-
-          <button
-             onClick={this.handleClick.bind(this)}
-             style={{
-               position: 'fixed',
-               bottom: '0px',
-               right: '0px',
-             }}
-          >
-            reload
-          </button>
         </div>
       );
     }
