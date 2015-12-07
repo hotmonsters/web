@@ -24,7 +24,6 @@ let UserStore = Reflux.createStore({
             user: this.user,
             loading: false
         });
-
     },
 
     loadUserFailed(error) {

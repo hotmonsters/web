@@ -6,6 +6,7 @@ import BorderBox from '../components/border-box.jsx';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 import Monster from '../components/monster.jsx';
+import Loader from 'halogen/MoonLoader';
 import MonsterEditor from '../components/monster-editor.jsx';
 import Guide from '../components/guide.jsx';
 import Contributor from '../components/contributor.jsx';
@@ -19,7 +20,9 @@ class Editor extends React.Component {
     this.state = {
       monster: {
         lines: []
-      }
+      },
+      loading: true,
+      loadingMonster: true,
     };
 
     this.handleContributorChange = function(contributor) {
@@ -39,6 +42,10 @@ class Editor extends React.Component {
       UserActions.loadMonster();
   }
 
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   handleMonsterUpdate(lines) {
       this.setState({monster: {lines: lines}});
   }
@@ -49,29 +56,17 @@ class Editor extends React.Component {
 
   render() {
     var contributor = this.state.user ? <Contributor user={this.state.user} onChange={this.handleContributorChange.bind(this)} /> : '';
+    var content;
 
-    return (
-        <BorderBox className='costume-editor'>
-            <header className="ribbon-header">
-                <div className="ribbon-wrapper">
-                    <div className="ribbon-front">
-                        <div className="text">
-                            edit costume
-                            <Link className="add-button" to="costume-ideas">
-                                <FontAwesome
-                                    name='arrow-left'
-                                    />
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="ribbon-edge-topleft"></div>
-                    <div className="ribbon-edge-topright"></div>
-                    <div className="ribbon-edge-bottomleft"></div>
-                    <div className="ribbon-edge-bottomright"></div>
-                    <div className="ribbon-back-left"></div>
-                    <div className="ribbon-back-right"></div>
-                </div>
-            </header>
+    if (this.state.loading || this.state.loadingMonster) {
+        content = (
+            <article className="loading">
+                <Loader color="#53195f" />
+                <p><em>loading monster parts</em></p>
+            </article>
+        );
+    } else {
+        content = (
             <article>
                 <div className="top-part">
                     <div className="preview">
@@ -94,6 +89,31 @@ class Editor extends React.Component {
                 </div>
                 <Guide />
             </article>
+        );
+    }
+    return (
+        <BorderBox className='costume-editor'>
+            <header className="ribbon-header">
+                <div className="ribbon-wrapper">
+                    <div className="ribbon-front">
+                        <div className="text">
+                            edit costume
+                            <Link className="add-button" to="costume-ideas">
+                                <FontAwesome
+                                    name='arrow-left'
+                                    />
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="ribbon-edge-topleft"></div>
+                    <div className="ribbon-edge-topright"></div>
+                    <div className="ribbon-edge-bottomleft"></div>
+                    <div className="ribbon-edge-bottomright"></div>
+                    <div className="ribbon-back-left"></div>
+                    <div className="ribbon-back-right"></div>
+                </div>
+            </header>
+            {content}
         </BorderBox>
     );
   }
