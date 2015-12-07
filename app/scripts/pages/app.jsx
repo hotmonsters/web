@@ -36,6 +36,7 @@ class RouteCSSTransitionGroup extends React.Component {
 
   componentDidUpdate() {
     if (this.state.previousPathname) {
+      ga('send', 'pageview');
       this.setState({ previousPathname: null })
     }
   }
