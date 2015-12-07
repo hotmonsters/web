@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { env } from './env.js';
+import env from './env.js';
 
 var defaultConfig = {
     apiRoot: "http://localhost:5000",
@@ -11,7 +11,8 @@ var herokuConfig = {
 
 var config = defaultConfig;
 
-if (env == 'production') {
+console.log(env);
+if (env.env == 'production') {
     config = _.extend(herokuConfig);
 }
 
