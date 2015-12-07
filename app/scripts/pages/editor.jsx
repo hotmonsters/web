@@ -17,27 +17,30 @@ class Editor extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      monster: ['yN', '  GB', '  IaJEz', 'Eqpraz', 'DassC', '  GaH', '    X']
+      monster: {
+        lines: []
+      }
     };
-
-    var updateContributor = _.debounce((function() {
-        console.debug("updating contributor");
-        UserActions.saveUser(this.state.user);
-    }).bind(this), 3000);
 
     this.handleContributorChange = function(contributor) {
         let newUser = _.extend(this.state.user, contributor);
-        this.setState({user: newUser}, updateContributor);
+        this.setState({user: newUser});
     }
+  }
+
+  handleSave() {
+      UserActions.saveUser(this.state.user);
+      UserActions.saveMonster(this.state.monster);
   }
 
   componentDidMount() {
       this.unsubscribe = UserStore.listen(this.onStatusChange.bind(this));
       UserActions.loadUser();
+      UserActions.loadMonster();
   }
 
-  handleMonsterUpdate(monster) {
-      this.setState({monster: monster});
+  handleMonsterUpdate(lines) {
+      this.setState({monster: {lines: lines}});
   }
 
   onStatusChange(state) {
@@ -72,16 +75,22 @@ class Editor extends React.Component {
             <article>
                 <div className="top-part">
                     <div className="preview">
-                        <Monster lines={this.state.monster} />
+                        <Monster lines={this.state.monster.lines} />
                     </div>
                     <span style={{width: '20px'}} />
                     <div className="editor">
-                        <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster} plaintext />
+                        <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster.lines} plaintext />
                     </div>
                     <span style={{width: '20px'}} />
-                    <div className="contributor">
-                        {contributor}
-                    </div>
+                </div>
+                <div className="contributor">
+                    {contributor}
+                    <button
+                        className="save btn"
+                        onClick={this.handleSave.bind(this)}
+                    >
+                        save
+                    </button>
                 </div>
                 <Guide />
             </article>

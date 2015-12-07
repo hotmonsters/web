@@ -6,8 +6,16 @@ class MonsterEditor extends React.Component {
         newLines[index] = event.target.value;
         this.props.onMonsterUpdate(newLines);
     }
+
+    removeRow() {
+        this.props.onMonsterUpdate(this.props.lines.slice(0, -1));
+    }
+
+    addRow() {
+        this.props.onMonsterUpdate(this.props.lines.concat(['']))
+    }
+
     render() {
-        console.debug(this.props);
         let makeHandleChange = function(index) {
             return function(event) {
                 this.handleChange(event, index);
@@ -38,6 +46,8 @@ class MonsterEditor extends React.Component {
         });
         return (
             <div className='monster-editor'>
+                <button onClick={this.removeRow.bind(this)}>-</button>
+                <button onClick={this.addRow.bind(this)}>+</button>
                 {lines}
             </div>
         );

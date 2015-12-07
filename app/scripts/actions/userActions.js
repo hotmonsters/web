@@ -7,7 +7,9 @@ localStorage = window.localStorage;
 
 const UserActions = Reflux.createActions({
     'loadUser': {children: ['completed', 'failed']},
-    'saveUser': {children: ['completed', 'failed']}
+    'saveUser': {children: ['completed', 'failed']},
+    'loadMonster': {children: ['completed', 'failed']},
+    'saveMonster': {children: ['completed', 'failed']},
 });
 
 var setupAjax = function (token) {
@@ -34,6 +36,14 @@ UserActions.loadUser.listen(function() {
     }).bind(this));
 });
 
+
+UserActions.loadMonster.listen(function() {
+    var promise = $.get(config.apiRoot + '/monster');
+    promise.then((function(monster) {
+        this.completed(monster);
+    }).bind(this));
+});
+
 UserActions.saveUser.listen(function(user) {
     var promise = $.ajax({
         url: config.apiRoot + '/me',
@@ -43,6 +53,18 @@ UserActions.saveUser.listen(function(user) {
 
     promise.then((function(user) {
         this.completed(user);
+    }).bind(this));
+});
+
+UserActions.saveMonster.listen(function(monster) {
+    var promise = $.ajax({
+        url: config.apiRoot + '/monster',
+        type: 'PUT',
+        data: JSON.stringify(monster)
+    });
+
+    promise.then((function(monster) {
+        this.completed(monster);
     }).bind(this));
 });
 

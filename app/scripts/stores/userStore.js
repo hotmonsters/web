@@ -24,12 +24,34 @@ let UserStore = Reflux.createStore({
             user: this.user,
             loading: false
         });
+
     },
 
     loadUserFailed(error) {
         this.trigger({
             error: error,
             loading: false
+        });
+    },
+
+    loadMonster() {
+        this.trigger({
+            loadingMonster: true
+        });
+    },
+
+    loadMonsterCompleted(monster) {
+        this.monster = monster;
+        this.trigger({
+            monster: this.monster,
+            loadingMonster: false
+        });
+    },
+
+    loadMonsterFailed(error) {
+        this.trigger({
+            error: error,
+            loadingMonster: false
         });
     }
 
