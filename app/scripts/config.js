@@ -11,7 +11,6 @@ var herokuConfig = {
 
 var config = defaultConfig;
 
-console.log(env);
 if (env.env == 'production') {
     config = _.extend(herokuConfig);
 }

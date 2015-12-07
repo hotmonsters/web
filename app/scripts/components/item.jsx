@@ -13,12 +13,10 @@ class Item extends React.Component {
     }
 
     handleMouseEnter() {
-        console.debug('mouse enter');
         this.setState({hover: true});
     }
 
     handleMouseLeave() {
-        console.debug('mouse leave');
         this.setState({hover: false});
     }
 
@@ -29,8 +27,6 @@ class Item extends React.Component {
                 hover: this.state.hover
             }
         ];
-
-        console.debug(this.props);
 
         var overlay;
         if (this.state.hover && this.props.monster.contributor) {
