@@ -35,6 +35,8 @@ UserActions.loadUser.listen(function() {
         setupAjax(user.token);
 
         this.completed(user);
+    }).bind(this)).fail((function(error) {
+        this.failed(error);
     }).bind(this));
 });
 
@@ -42,7 +44,12 @@ UserActions.loadUser.listen(function() {
 UserActions.loadMonster.listen(function() {
     var promise = $.get(config.apiRoot + '/monster');
     promise.then((function(monster) {
+        if (monster.lines.length === 0) {
+            monster.lines = ['', '', '', ''];
+        }
         this.completed(monster);
+    }).bind(this)).fail((function(error) {
+        this.failed(error);
     }).bind(this));
 });
 
@@ -55,6 +62,8 @@ UserActions.saveUser.listen(function(user) {
 
     promise.then((function(user) {
         this.completed(user);
+    }).bind(this)).fail((function(error) {
+        this.failed(error);
     }).bind(this));
 });
 
@@ -67,6 +76,9 @@ UserActions.saveMonster.listen(function(monster) {
 
     promise.then((function(monster) {
         this.completed(monster);
+    }).bind(this)).fail((function(error) {
+        console.debug(error);
+        this.failed(error);
     }).bind(this));
 });
 

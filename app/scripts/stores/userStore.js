@@ -52,7 +52,28 @@ let UserStore = Reflux.createStore({
             error: error,
             loadingMonster: false
         });
-    }
+    },
+
+    saveMonster() {
+        this.trigger({
+            savingMonster: true
+        });
+    },
+
+    saveMonsterCompleted() {
+        this.trigger({
+            savingMonster: false
+        });
+    },
+
+    saveMonsterFailed(error) {
+        console.debug("save monster failed");
+        this.trigger({
+            savingMonster: false,
+            error: error,
+        });
+    },
+
 
 
 });

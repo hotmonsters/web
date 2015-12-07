@@ -16,6 +16,8 @@ ItemActions.loadItems.listen(function(){
   var promise = $.get(config.apiRoot + '/');
   promise.then((function(monsters) {
       this.completed(monsters.monsters);
+  }).bind(this)).fail((function(error) {
+      this.failed(error);
   }).bind(this));
   /*
   setTimeout(() => {

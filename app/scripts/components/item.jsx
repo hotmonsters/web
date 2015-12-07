@@ -30,13 +30,22 @@ class Item extends React.Component {
 
         var overlay;
         if (this.state.hover && this.props.monster.contributor) {
+            var contribText = '???';
+            if (this.props.monster.contributor.name) {
+                contribText = this.props.monster.contributor.name;
+            }
+
+            if (this.props.monster.contributor.age) {
+                contribText = contribText + ', age ' + this.props.monster.contributor.age;
+            }
+
+
             overlay = (
                 <aside>
                     <em>contributed by:</em>
                     <br />
                     <strong>
-                        {this.props.monster.contributor.name},
-                        age {this.props.monster.contributor.age}
+                        {contribText}
                     </strong>
                 </aside>
             );

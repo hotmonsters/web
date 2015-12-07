@@ -32,6 +32,11 @@ class MonsterEditor extends React.Component {
             className = 'plaintext';
         }
 
+        var editorClassName = 'monster-editor';
+        if (this.props.hasError) {
+            editorClassName += ' has-error';
+        }
+
         let lines = this.props.lines.map(function(line, index) {
             return (
                 <input
@@ -45,7 +50,7 @@ class MonsterEditor extends React.Component {
             );
         });
         return (
-            <div className='monster-editor'>
+            <div className={editorClassName}>
                 <button onClick={this.removeRow.bind(this)}>-</button>
                 <button onClick={this.addRow.bind(this)}>+</button>
                 {lines}

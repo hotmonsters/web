@@ -7,6 +7,8 @@ import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 import Monster from '../components/monster.jsx';
 import Loader from 'halogen/MoonLoader';
+import SavingLoader from 'halogen/PulseLoader';
+
 import MonsterEditor from '../components/monster-editor.jsx';
 import Guide from '../components/guide.jsx';
 import Contributor from '../components/contributor.jsx';
@@ -23,6 +25,8 @@ class Editor extends React.Component {
       },
       loading: true,
       loadingMonster: true,
+      saving: false,
+      savingMonster: false,
     };
 
     this.handleContributorChange = function(contributor) {
@@ -66,6 +70,25 @@ class Editor extends React.Component {
             </article>
         );
     } else {
+        var savingSpinner = (this.state.savingMonster || this.state.saving) ?
+            <SavingLoader color="#333" size="6px" /> : '';
+
+        var editor = (
+            <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster.lines} plaintext />
+        );
+
+
+        if (this.state.error && this.state.error.responseJSON['lines']) {
+            editor = (
+                <MonsterEditor
+                    onMonsterUpdate={this.handleMonsterUpdate.bind(this)}
+                    lines={this.state.monster.lines}
+                    plaintext
+                    hasError
+                />
+            )
+        }
+
         content = (
             <article>
                 <div className="top-part">
@@ -74,7 +97,7 @@ class Editor extends React.Component {
                     </div>
                     <span style={{width: '20px'}} />
                     <div className="editor">
-                        <MonsterEditor onMonsterUpdate={this.handleMonsterUpdate.bind(this)} lines={this.state.monster.lines} plaintext />
+                        {editor}
                     </div>
                     <span style={{width: '20px'}} />
                 </div>
@@ -85,6 +108,9 @@ class Editor extends React.Component {
                         onClick={this.handleSave.bind(this)}
                     >
                         save
+                        <span style={{display: 'inline-block'}}>
+                            {savingSpinner}
+                        </span>
                     </button>
                 </div>
                 <Guide />
