@@ -39,7 +39,8 @@ class Item extends React.Component {
                     <em>contributed by:</em>
                     <br />
                     <strong>
-                        {this.props.monster.contributor}
+                        {this.props.monster.contributor.name},
+                        age {this.props.monster.contributor.age}
                     </strong>
                 </aside>
             );

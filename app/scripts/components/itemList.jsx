@@ -21,6 +21,7 @@ class ItemList extends React.Component {
     }
 
     render() {
+        console.debug(this.props);
       let items = this.props.items.map( (item, index) =>
                       <Item key={index} monster={item} />
                   ),

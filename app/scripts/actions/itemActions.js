@@ -1,4 +1,7 @@
 import Reflux from 'reflux';
+import $ from 'jquery';
+
+import config from '../config.js';
 
 const ItemActions = Reflux.createActions({
   'loadItems': {children: ['completed', 'failed']}
@@ -10,8 +13,11 @@ function shuffle(o){
 }
 
 ItemActions.loadItems.listen(function(){
-  // make your api call/ async stuff here
-  // we use setTimeout for faking async behaviour here
+  var promise = $.get(config.apiRoot + '/');
+  promise.then((function(monsters) {
+      this.completed(monsters.monsters);
+  }).bind(this));
+  /*
   setTimeout(() => {
     const items = [
       {
@@ -55,7 +61,7 @@ ItemActions.loadItems.listen(function(){
 
     // on error
     // this.failed('an error occured');
-  }, 1000);
+  }, 1000);*/
 });
 
 export default ItemActions;
