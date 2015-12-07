@@ -97,6 +97,10 @@ class Editor extends React.Component {
 
         content = (
             <article>
+                <div className="device-warning">
+                    we recommend using a computer for adding
+                    costume ideas
+                </div>
                 <div className="top-part">
                     <div className="preview">
                         <Monster lines={this.state.monster.lines} />
