@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import StaticContainer from 'react-static-container';
+import GoogleAnalytics from 'react-g-analytics';
 import Footer from '../components/footer.jsx'
+import config from '../config.js';
 
 class RouteCSSTransitionGroup extends React.Component {
   constructor(props, context) {
@@ -36,7 +38,6 @@ class RouteCSSTransitionGroup extends React.Component {
 
   componentDidUpdate() {
     if (this.state.previousPathname) {
-      ga('send', 'pageview');
       this.setState({ previousPathname: null })
     }
   }
@@ -47,6 +48,14 @@ RouteCSSTransitionGroup.contextTypes = {
 }
 
 const App = (props) => {
+    var googleAnalytics;
+    if (config.googleAnalytics) {
+        googleAnalytics = (
+            <GoogleAnalytics id={config.googleAnalytics} />
+        );
+    } else {
+        googleAnalytics = '';
+    }
     return (
             /*
         <RouteCSSTransitionGroup
@@ -54,6 +63,7 @@ const App = (props) => {
           transitionEnterTimeout={500} transitionLeaveTimeout={500}
         >*/
         <div className="content">
+          {googleAnalytics}
           {props.children}
         </div>
     );

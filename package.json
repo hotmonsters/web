@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.1",
-    "gulp-util": "^3.0.7",
     "halogen": "^0.1.10",
     "history": "^1.13.0",
     "jquery": "^2.1.4",
@@ -54,6 +53,7 @@
     "react-dom": "^0.14.3",
     "react-fontawesome": "^0.3.3",
     "react-fullpage": "^0.1.1",
+    "react-g-analytics": "^0.1.16",
     "react-masonry-component": "^2.0.0",
     "react-packery-component": "^1.0.2",
     "react-responsive": "^1.0.1",
