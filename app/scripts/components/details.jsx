@@ -24,9 +24,7 @@ class Details extends React.Component {
                         <h1>HOTMONSTERS.ORG</h1>
 
                         <footer>
-                            <p>friday, december 18, 2015</p>
-                            <p>monsterdelphia, monstervania</p>
-                            <p style={{marginTop: '1em'}}><Link to="costume-ideas">costume ideas</Link></p>
+                            <p style={{marginTop: '1em'}}><Link to="monsteragerie">the menagerie</Link></p>
                         </footer>
                     </BorderBox>
                 </div>

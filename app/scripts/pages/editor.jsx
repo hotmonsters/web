@@ -99,7 +99,7 @@ class Editor extends React.Component {
             <article>
                 <div className="device-warning">
                     ***we recommend using a computer for adding
-                    costume ideas***
+                    new monsters***
                 </div>
                 <div className="top-part">
                     <div className="preview">
@@ -133,8 +133,8 @@ class Editor extends React.Component {
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
                         <div className="text">
-                            edit costume
-                            <Link className="add-button" to="costume-ideas">
+                            back to safety
+                            <Link className="add-button" to="monsteragerie">
                                 <FontAwesome
                                     name='arrow-left'
                                     />

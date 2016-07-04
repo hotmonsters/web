@@ -1,5 +1,13 @@
+
+Redirect 301 /costume-ideas /monsteragerie
+Redirect 301 /menagerie /monsteragerie
+Redirect 302 /gallery /monsteragerie
+
+RewriteEngine on
 RewriteBase /
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
+
+

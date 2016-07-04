@@ -44,6 +44,14 @@ gulp.task('html', function() {
     .pipe($.connect.reload());
 });
 
+// copy htaccess from app to dist
+gulp.task('htaccess', function() {
+  return gulp.src(app + '.htaccess')
+    .pipe(gulp.dest(dist))
+    .pipe($.size({ title : 'htaccess' }))
+    .pipe($.connect.reload());
+});
+
 gulp.task('styles',function(cb) {
 
   // convert stylus to css
@@ -110,9 +118,9 @@ gulp.task('clean', function(cb) {
 
 
 // by default build project and then watch files in order to trigger livereload
-gulp.task('default', ['images', 'fonts', 'html', 'scripts', 'styles', 'serve', 'watch']);
+gulp.task('default', ['images', 'fonts', 'html', 'htaccess', 'scripts', 'styles', 'serve', 'watch']);
 
 // waits until clean is finished then builds the project
 gulp.task('build', [], function(){
-  gulp.start(['images', 'fonts', 'html','scripts','styles']);
+  gulp.start(['images', 'fonts', 'html', 'htaccess', 'scripts','styles']);
 });

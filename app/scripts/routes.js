@@ -21,7 +21,7 @@ const routes = (
       <Route path='info' component={ Info } />
       <Route path='home' component={ Home } />
       <Route path='details' component={ Details } />
-      <Route path='costume-ideas' component={ CostumeIdeas } />
+      <Route path='monsteragerie' component={ CostumeIdeas } />
       <Route path='editor' component={ Editor } />
       <Route path='*' component={NotFound}/>
     </Route>

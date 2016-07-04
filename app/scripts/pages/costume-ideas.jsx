@@ -36,7 +36,7 @@ class CostumeIdeas extends React.Component {
                 <div className="ribbon-wrapper">
                     <div className="ribbon-front">
                         <div className="text">
-                            costume ideas
+                            enter lab here
                             <Link className="add-button" to="editor">
                                 <FontAwesome
                                     name='plus'
