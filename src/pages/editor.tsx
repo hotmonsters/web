@@ -20,10 +20,23 @@ const emptyDraft: Draft = {
   lines: ["", "", "", ""]
 };
 
+const isDraft = (value: unknown): value is Draft => {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Record<string, unknown>;
+  const { lines, user } = candidate;
+  if (!Array.isArray(lines)) return false;
+  if (!lines.every((line) => typeof line === "string")) return false;
+  if (typeof user !== "object" || user === null) return false;
+  const { name, age } = user as Record<string, unknown>;
+  return typeof name === "string" && typeof age === "string";
+};
+
 const loadDraft = (): Draft => {
   try {
     const stored = localStorage.getItem(DRAFT_KEY);
-    return stored ? JSON.parse(stored) : emptyDraft;
+    if (!stored) return emptyDraft;
+    const parsed: unknown = JSON.parse(stored);
+    return isDraft(parsed) ? parsed : emptyDraft;
   } catch {
     return emptyDraft;
   }
@@ -34,7 +47,11 @@ const Editor = () => {
   const [savePending, setSavePending] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    } catch {
+      // draft persistence is best-effort; ignore storage failures
+    }
   }, [draft]);
 
   const handleMonsterUpdate = (lines: string[]) =>

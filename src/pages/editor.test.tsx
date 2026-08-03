@@ -59,3 +59,37 @@ it("links back to the menagerie and shows the guide", () => {
     container.querySelectorAll(".guide-glyph").length
   ).toBeGreaterThan(0);
 });
+
+it("survives a corrupt stored draft", () => {
+  localStorage.setItem("hotmonsters:draft", "null");
+  const { container } = renderEditor();
+  const inputs = container.querySelectorAll(".monster-editor input");
+  expect(inputs).toHaveLength(4);
+  inputs.forEach((input) => expect(input).toHaveValue(""));
+});
+
+it("survives an empty-object stored draft", () => {
+  localStorage.setItem("hotmonsters:draft", "{}");
+  const { container } = renderEditor();
+  const inputs = container.querySelectorAll(".monster-editor input");
+  expect(inputs).toHaveLength(4);
+  inputs.forEach((input) => expect(input).toHaveValue(""));
+});
+
+it("tolerates blocked storage writes", () => {
+  const spy = vi
+    .spyOn(Storage.prototype, "setItem")
+    .mockImplementation(() => {
+      throw new Error("blocked");
+    });
+
+  const { container } = renderEditor();
+  fireEvent.change(
+    container.querySelectorAll(".monster-editor input")[0],
+    { target: { value: "AaB" } }
+  );
+  const preview = container.querySelector(".preview .monster pre");
+  expect(preview).toHaveTextContent("AaB");
+
+  spy.mockRestore();
+});
