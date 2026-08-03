@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import App from "./pages/app";
 import CostumeIdeas from "./pages/costume-ideas";
+import Details from "./pages/details";
+import Home from "./pages/home";
 import Info from "./pages/info";
 import NotFound from "./pages/not-found";
 
@@ -19,6 +21,9 @@ ReactDOM.createRoot(root).render(
   >
     <Routes>
       <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="details" element={<Details />} />
         <Route path="info" element={<Info />} />
         <Route path="monsteragerie" element={<CostumeIdeas />} />
         <Route path="*" element={<NotFound />} />
