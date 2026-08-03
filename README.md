@@ -24,7 +24,9 @@ original site database (preserved in
 
 ## Deploy
 
-    ./bin/deploy.sh [host]
+    ./bin/deploy.sh [host] [dest]
 
-Builds and rsyncs `dist/` to the VPS. See `deploy/Caddyfile` for the
-server config.
+Builds and rsyncs `dist/` to nearlyfreespeech.net (defaults:
+`hotmonsters.org` per `~/.ssh/config`, web root `/home/public`).
+`public/.htaccess` carries the SPA fallback and legacy redirects and
+ships inside `dist/` automatically.
