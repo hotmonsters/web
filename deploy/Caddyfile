@@ -1,6 +1,9 @@
 hotmonsters.org, www.hotmonsters.org {
 	root * /srv/hotmonsters
 	encode gzip
+	redir /costume-ideas /monsteragerie permanent
+	redir /menagerie /monsteragerie permanent
+	redir /gallery /monsteragerie temporary
 	try_files {path} /index.html
 	file_server
 }
