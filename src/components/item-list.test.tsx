@@ -21,7 +21,9 @@ const renderList = (props: {
   loading: boolean;
 }) =>
   render(
-    <MemoryRouter>
+    <MemoryRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <ItemList {...props} />
     </MemoryRouter>
   );

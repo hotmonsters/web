@@ -14,7 +14,9 @@ if (!root) {
 }
 
 ReactDOM.createRoot(root).render(
-  <BrowserRouter>
+  <BrowserRouter
+    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+  >
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="info" element={<Info />} />

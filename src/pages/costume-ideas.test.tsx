@@ -24,7 +24,9 @@ it("loads monsters and renders the ribbon gallery", async () => {
   }));
 
   const { container } = render(
-    <MemoryRouter>
+    <MemoryRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <CostumeIdeas />
     </MemoryRouter>
   );
