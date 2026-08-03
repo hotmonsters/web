@@ -3,3 +3,5 @@ dist
 app/bower_components
 app/bundles
 *.log
+dist/
+node_modules/
